@@ -1,13 +1,14 @@
 def score(game):
+    number_of_frames = 10
     result = 0
-    frame = 1
+    actual_frame = 1
     in_first_try = True
     for i in range(len(game)):
         if game[i] == '/':
             result += 10 - last
         else:
             result += get_value(game[i])
-        if frame < 10 and get_value(game[i]) == 10:
+        if actual_frame < number_of_frames and get_value(game[i]) == 10:
             if game[i] == '/':
                 result += get_value(game[i+1])
             elif game[i] == 'X' or game[i] == 'x':
@@ -18,11 +19,11 @@ def score(game):
                     result += get_value(game[i+2])
         last = get_value(game[i])
         if not in_first_try:
-            frame += 1
+            actual_frame += 1
         in_first_try = not in_first_try
         if game[i] == 'X' or game[i] == 'x':
             in_first_try = True
-            frame += 1
+            actual_frame += 1
     return result
 
 
