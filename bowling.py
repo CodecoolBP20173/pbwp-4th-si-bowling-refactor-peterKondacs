@@ -5,7 +5,7 @@ def score(game):
     in_first_try = True
     for i in range(len(game)):
         if game[i] == '/':
-            result += 10 - last
+            result += 10 - last_roll
         else:
             result += get_value(game[i])
         if actual_frame < NUMBER_OF_FRAMES:
@@ -17,7 +17,7 @@ def score(game):
                     result += 10 - get_value(game[i+1])
                 else:
                     result += get_value(game[i+2])
-        last = get_value(game[i])
+        last_roll = get_value(game[i])
         if not in_first_try:
             actual_frame += 1
         in_first_try = not in_first_try
