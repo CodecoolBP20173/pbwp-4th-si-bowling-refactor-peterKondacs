@@ -8,7 +8,7 @@ def score(game):
             result += 10 - last
         else:
             result += get_value(game[i])
-        if actual_frame < NUMBER_OF_FRAMES and get_value(game[i]) == 10:
+        if actual_frame < NUMBER_OF_FRAMES:
             if game[i] == '/':
                 result += get_value(game[i+1])
             elif game[i] == 'X' or game[i] == 'x':
