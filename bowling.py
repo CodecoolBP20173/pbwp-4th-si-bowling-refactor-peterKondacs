@@ -21,10 +21,7 @@ def score(game):
         last = get_value(game[i])
         if not in_first_try:
             frame += 1
-        if in_first_try:
-            in_first_try = False
-        else:
-            in_first_try = True
+        in_first_try = not in_first_try
         if game[i] == 'X' or game[i] == 'x':
             in_first_try = True
             frame += 1
