@@ -1,7 +1,14 @@
-NUMBER_OF_FRAMES = 10
-
-
 def score(game):
+    """
+    Calculates the the score for a bowling game.
+
+    Args:
+        game: a series of characters each representing a roll of the player.
+
+    Returns: the final score as an integer based on the given rolls.
+    """
+
+    NUMBER_OF_FRAMES = 10
     result = 0
     actual_frame = 1
     in_first_try = True
@@ -23,6 +30,15 @@ def score(game):
 
 
 def get_value(char):
+    """
+    Gives the score value of the given character.
+
+    Args:
+        char: a character representing the result of a roll in a bowling game.
+
+    Returns: the score value as an integer for a given roll
+    """
+
     if char in [str(i) for i in range(10)]:
         return int(char)
     elif char in ['X', 'x', '/']:
@@ -34,6 +50,16 @@ def get_value(char):
 
 
 def count_spare_score(last_roll, next_roll):
+    """
+    Makes the modified score calculation for a spare roll.
+
+    Args:
+        last_roll: the character that represents the last roll
+        next_roll: the character that represents the next roll
+
+    Returns: the modified score of a spare roll as an integer.
+    """
+
     score = 0
     score += get_value('/') - get_value(last_roll)
     score += get_value(next_roll)
@@ -41,6 +67,16 @@ def count_spare_score(last_roll, next_roll):
 
 
 def count_strike_score(next_roll, roll_after_next):
+    """
+    Makes the modified score calculation for a strike roll.
+
+    Args:
+        last_roll: the character that represents the next roll
+        roll_after_next: the character that represents the roll after the next roll
+
+    Returns: the modified score of a strike roll as an integer.
+    """
+
     score = 0
     score += get_value('X')
     score += get_value(next_roll) + get_value(roll_after_next)
